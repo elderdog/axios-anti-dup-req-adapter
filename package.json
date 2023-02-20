@@ -1,0 +1,52 @@
+{
+  "name": "axios-anti-dup-req-adapter",
+  "version": "0.1.0",
+  "description": "Axios adapter which prevents instance from sending duplicate requests",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node example",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elderdog/axios-anti-dup-req-adapter.git"
+  },
+  "keywords": [
+    "axios",
+    "adapter",
+    "cache",
+    "request",
+    "requests",
+    "duplicate",
+    "cancel"
+  ],
+  "author": "elderdog",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elderdog/axios-anti-dup-req-adapter/issues"
+  },
+  "homepage": "https://github.com/elderdog/axios-anti-dup-req-adapter#readme",
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.35.2",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^18.14.0",
+    "eslint": "^8.34.0",
+    "rollup": "^3.17.1",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "peerDependencies": {
+    "axios": "^0.19.2 || ^1.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
+  }
+}
