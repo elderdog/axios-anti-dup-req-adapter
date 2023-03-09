@@ -2,15 +2,17 @@ import { describe, it, expect } from 'vitest'
 import axios from 'axios'
 import adapter from '../index'
 
-describe.concurrent('when to use cache', () => {
+describe.concurrent('when or not to use cache', () => {
   it('duplicate requests should use cache', async () => {
     const api = axios.create({ baseURL: '', adapter })
     const url = 'https://app.requestly.io/delay/1000/http://www.randomnumberapi.com/api/v1.0/randomuuid'
     const req1 = api.get(url).then(resp => resp.data.join())
     const req2 = api.get(url).then(resp => resp.data.join())
+    const req3 = api.get(url, { useAdra: false }).then(resp => resp.data.join())
     const result = await Promise.race([req1, req2])
     await expect(req1).resolves.toBe(result)
     await expect(req2).resolves.toBe(result)
+    await expect(req3).resolves.not.toBe(result)
   }, 10000)
 
   it('different requests should have different responses', async () => {

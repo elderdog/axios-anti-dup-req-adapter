@@ -2,8 +2,10 @@
   "name": "axios-anti-dup-req-adapter",
   "version": "0.1.0",
   "description": "Axios adapter which prevents instance from sending duplicate requests",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "type": "module",
+  "files": ["dist"],
   "scripts": {
     "example": "node example",
     "build": "rollup -c",

@@ -2,7 +2,9 @@
   "compilerOptions": {
     "allowJs": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "types"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "example"]

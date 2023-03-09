@@ -9,5 +9,5 @@ export default {
     format: 'es'
   },
   external: ['axios'],
-  plugins: [typescript(), commonjs(), babel({ babelHelpers: 'bundled' })]
+  plugins: [typescript({ exclude: 'src/__test__/**' }), commonjs(), babel({ babelHelpers: 'bundled' })]
 }

@@ -148,11 +148,14 @@ var cache$1 = {
 };
 
 var adapter = function (config) {
+    var request = axios.defaults.adapter(config);
+    var _a = config.useAdra, useAdra = _a === void 0 ? true : _a;
+    if (!useAdra)
+        return request;
     var key = hash(config);
     var target = cache$1.get(key);
     if (target)
         return target;
-    var request = axios.defaults.adapter(config);
     cache$1.set(key, request);
     return request;
 };
