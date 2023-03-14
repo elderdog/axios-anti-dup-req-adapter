@@ -147,17 +147,21 @@ var cache$1 = {
     get: cache.get
 };
 
-var adapter = function (config) {
-    var request = axios.defaults.adapter(config);
-    var _a = config.useAdra, useAdra = _a === void 0 ? true : _a;
-    if (!useAdra)
+var adapterEnhancer = function (adapter) {
+    if (adapter === void 0) { adapter = axios.defaults.adapter; }
+    return function (config) {
+        var request = adapter(config);
+        var _a = config.useAdra, useAdra = _a === void 0 ? true : _a;
+        if (!useAdra)
+            return request;
+        var key = hash(config);
+        var target = cache$1.get(key);
+        if (target)
+            return target;
+        cache$1.set(key, request);
         return request;
-    var key = hash(config);
-    var target = cache$1.get(key);
-    if (target)
-        return target;
-    cache$1.set(key, request);
-    return request;
+    };
 };
+var index = adapterEnhancer();
 
-export { adapter as default };
+export { adapterEnhancer, index as default };

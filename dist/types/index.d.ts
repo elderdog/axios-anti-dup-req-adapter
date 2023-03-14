@@ -1,4 +1,4 @@
-import { type AxiosRequestConfig } from 'axios';
+import { type AxiosAdapter } from 'axios';
 declare module 'axios' {
     interface AxiosRequestConfig {
         /**
@@ -7,5 +7,7 @@ declare module 'axios' {
         useAdra?: boolean;
     }
 }
-declare const adapter: (config: AxiosRequestConfig) => Promise<any>;
-export default adapter;
+declare const adapterEnhancer: (adapter?: AxiosAdapter) => AxiosAdapter;
+declare const _default: AxiosAdapter;
+export default _default;
+export { adapterEnhancer };

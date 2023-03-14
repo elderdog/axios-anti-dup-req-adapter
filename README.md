@@ -30,7 +30,23 @@ instance.get(/** your code*/)
 ``` javascript
 /**
  * sometimes you don't want to use the cache
- * for example your request need a different response for each invocation
+ * for example your request needs a different response for each invocation
  */
 instance.get('/random/number', { useAdra: false })
+```
+
+### Use your customized adapter
+> inside this adapter, we use `axios.defaults.adapter` as network request adapter by default, if you wanna use your customized adapter, do it like this
+``` javascript
+import axios from 'axios'
+import adapter, { adapterEnhancer } from 'axios-anti-dup-req-adapter'
+
+const myAdapter = /** implement your adapter */
+const instance = axios.create({
+  baseURL: 'http://example.base',
+  { adapter: adapterEnhancer(myAdapter) }
+})
+
+// you can use the feature of both adapters now
+instance.get(/** your code*/)
 ```
